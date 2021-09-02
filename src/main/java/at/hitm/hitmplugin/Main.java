@@ -2,6 +2,7 @@ package at.hitm.hitmplugin;
 
 import at.hitm.hitmplugin.commands.DateCommand;
 import at.hitm.hitmplugin.commands.GetOnlinePlayersCommand;
+import at.hitm.hitmplugin.commands.GiveMoneyCommand;
 import at.hitm.hitmplugin.listeners.JoinListener;
 import at.hitm.hitmplugin.listeners.QuitListener;
 import org.bukkit.Bukkit;
@@ -42,5 +43,6 @@ public final class Main extends JavaPlugin {
     private void commandRegistration() {
         getCommand("date").setExecutor(new DateCommand());
         getCommand("getOnlinePlayers").setExecutor(new GetOnlinePlayersCommand());
+        getCommand("giveMoney").setExecutor(new GiveMoneyCommand());
     }
 }

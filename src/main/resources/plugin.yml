@@ -8,7 +8,13 @@ description: A plugin for the hitm mc server
 commands:
   date:
     description: Zeigt das Datum an
-    usage: /date
+    #usage: /date
   getOnlinePlayers:
     description: Zeigt alle Spieler an die gerade online sind
-    usage: /getOnlinePlayers
+    #usage: /getOnlinePlayers
+  giveMoney:
+    description: gives money to a user
+    #usage: /givemoney [amount of money]
+
+
+
