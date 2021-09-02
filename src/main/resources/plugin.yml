@@ -1,0 +1,14 @@
+name: Hitmplugin
+version: '${version}'
+main: at.hitm.hitmplugin.Main
+api-version: 1.17
+authors: [ mPuchner, jHofer ]
+description: A plugin for the hitm mc server
+
+commands:
+  date:
+    description: Zeigt das Datum an
+    usage: /date
+  getOnlinePlayers:
+    description: Zeigt alle Spieler an die gerade online sind
+    usage: /getOnlinePlayers
