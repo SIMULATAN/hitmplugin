@@ -39,6 +39,7 @@ public class GiveMoneyCommand implements CommandExecutor {
             assert meta != null;
             meta.setDisplayName(ChatColor.AQUA + "HITMcoin");
             meta.addEnchant(Enchantment.LOYALTY, 10, true);
+            meta.setCustomModelData(1);
             List<String> lore = new ArrayList<>();
 
             lore.add("This is the official currency of the hitm server");
