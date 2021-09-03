@@ -4,8 +4,7 @@ import at.hitm.hitmplugin.api.API;
 import at.hitm.hitmplugin.commands.DateCommand;
 import at.hitm.hitmplugin.commands.GetOnlinePlayersCommand;
 import at.hitm.hitmplugin.commands.GiveMoneyCommand;
-import at.hitm.hitmplugin.listeners.JoinListener;
-import at.hitm.hitmplugin.listeners.QuitListener;
+import at.hitm.hitmplugin.listeners.JoinLeaveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
@@ -15,7 +14,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getLogger().fine("Plugin wird aktiviert");
+        Bukkit.getLogger().fine("Plugin wird aktiviert...");
 
         listenerRegistration();
         commandRegistration();
@@ -34,14 +33,13 @@ public final class Main extends JavaPlugin {
      * @return the prefix
      */
     public static String getPrefix() {
-        return ChatColor.DARK_GRAY +  "[" + ChatColor.GOLD + "Manuels Plugin" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;
+        return ChatColor.DARK_GRAY +  "[" + ChatColor.GOLD + "HITM" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;
     }
 
     private void listenerRegistration() {
-        Bukkit.getLogger().fine("Plugin wird deaktiviert");
+        Bukkit.getLogger().fine("Plugin wird deaktiviert...");
         PluginManager pluginManager = Bukkit.getPluginManager();
-        pluginManager.registerEvents(new JoinListener(), this);
-        pluginManager.registerEvents(new QuitListener(), this);
+        pluginManager.registerEvents(new JoinLeaveListener(), this);
     }
 
     private void commandRegistration() {
