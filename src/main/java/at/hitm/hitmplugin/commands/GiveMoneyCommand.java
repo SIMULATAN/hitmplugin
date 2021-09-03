@@ -5,6 +5,7 @@
 
 package at.hitm.hitmplugin.commands;
 
+import at.hitm.hitmplugin.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -27,11 +28,10 @@ public class GiveMoneyCommand implements CommandExecutor {
         if(args.length != 1) {
             sender.sendMessage(ChatColor.DARK_RED + "Error: " + ChatColor.GRAY + "bitte gültige Anzahl angeben");
         } else if (!isNumeric(args[0])) {
-            sender.sendMessage(ChatColor.DARK_RED + "Error: " + ChatColor.GRAY + "bitte eine Zahl als Parameter angeben");
+            sender.sendMessage(Main.getPrefix() + ChatColor.DARK_RED + "Error: " + ChatColor.GRAY + "bitte eine Zahl als Parameter angeben");
         } else if (!player.isOp()) {
-            sender.sendMessage(ChatColor.DARK_RED + "Error: " + ChatColor.GRAY + "Du musst Operator Status besitzen");
+            sender.sendMessage(Main.getPrefix() + ChatColor.DARK_RED + "Error: " + ChatColor.GRAY + "Du musst Operator Status besitzen");
         } else {
-            sender.sendMessage(args[0]);
             int amount = Integer.parseInt(args[0]);
 
             ItemStack itemStack = new ItemStack(Material.EMERALD, amount);
@@ -42,7 +42,7 @@ public class GiveMoneyCommand implements CommandExecutor {
             List<String> lore = new ArrayList<>();
 
             lore.add("This is the official currency of the hitm server");
-            lore.add(ChatColor.GREEN + "Value: 1HITMC (HITMcoin)");
+            lore.add(ChatColor.GREEN + "Value: 1HIT (HITMcoin)");
 
             meta.setLore(lore);
             itemStack.setItemMeta(meta);

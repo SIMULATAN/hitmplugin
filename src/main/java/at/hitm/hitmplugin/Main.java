@@ -27,7 +27,7 @@ public final class Main extends JavaPlugin {
 
     /**
      * Gets the prefix of the plugin
-     * @return
+     * @return the prefix
      */
     public static String getPrefix() {
         return ChatColor.DARK_GRAY +  "[" + ChatColor.GOLD + "Manuels Plugin" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;
