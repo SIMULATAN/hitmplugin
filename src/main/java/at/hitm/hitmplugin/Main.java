@@ -1,5 +1,6 @@
 package at.hitm.hitmplugin;
 
+import at.hitm.hitmplugin.api.API;
 import at.hitm.hitmplugin.commands.DateCommand;
 import at.hitm.hitmplugin.commands.GetOnlinePlayersCommand;
 import at.hitm.hitmplugin.commands.GiveMoneyCommand;
@@ -18,11 +19,14 @@ public final class Main extends JavaPlugin {
 
         listenerRegistration();
         commandRegistration();
+        // start the webserver
+        API.init();
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        API.shutdown();
     }
 
     /**
