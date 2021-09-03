@@ -70,6 +70,10 @@ public class WebsocketHandler {
                     players.put(getUserinfo(player));
                 }
                 respond(sessionRaw, id, action, players);
+            } else if (action == EnumRequestType.WHITELIST) {
+                OfflinePlayer p = Bukkit.getOfflinePlayer(UUID.fromString((String) requestData));
+                p.setWhitelisted(true);
+                respond(sessionRaw, id, action, p.getName() + " got whitelisted.");
             }
         } catch (Exception e) {
             try {
