@@ -1,3 +1,8 @@
+/**
+ * @Author: Jakob Hofer
+ * @Date: 4.9.21
+ */
+
 package at.hitm.hitmplugin.api;
 
 import at.hitm.hitmplugin.utils.Utils;

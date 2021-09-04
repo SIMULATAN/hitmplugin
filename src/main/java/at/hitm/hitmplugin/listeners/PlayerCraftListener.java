@@ -1,5 +1,5 @@
 /**
- * @Author: Manuel Puchner
+ * @Author: Jakob Hofer, Manuel Puchner
  * @Date: 04.09.21
  */
 
