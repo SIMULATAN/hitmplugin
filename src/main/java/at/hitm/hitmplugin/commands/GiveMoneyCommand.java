@@ -15,12 +15,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 
-
 public class GiveMoneyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if( !(sender instanceof Player) ) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage("Only players can use this command");
             return true;
         }
@@ -31,12 +30,12 @@ public class GiveMoneyCommand implements CommandExecutor {
             sender.sendMessage(Main.getPrefix() + ChatColor.DARK_RED + "Error: " + ChatColor.GRAY + "Du musst Operator Status besitzen");
         } else {
             int amount = 1;
-            if(args.length == 1 && isNumeric(args[0])) {
+            if (args.length == 1 && isNumeric(args[0])) {
                 amount = Integer.parseInt(args[0]);
             }
 
 
-            PlayerInventory inv =  player.getInventory();
+            PlayerInventory inv = player.getInventory();
 
             for (int i = 0; i < amount; i++) {
                 inv.addItem(ItemManager.HITMcoin);

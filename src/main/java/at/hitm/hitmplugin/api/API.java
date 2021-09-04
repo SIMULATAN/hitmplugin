@@ -5,7 +5,7 @@ import spark.Spark;
 public class API {
 
     // TODO: save to config
-    private static final int port = 187;
+    private static final int port = 3330;
 
     private static boolean initialized = false;
 

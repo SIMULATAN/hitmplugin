@@ -20,7 +20,7 @@ public class GetOnlinePlayersCommand implements CommandExecutor {
         int counter = 0;
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             ++counter;
-            sender.sendMessage(Main.getPrefix() + "Player " + ChatColor.DARK_GRAY + "( " + ChatColor.GRAY +  counter + ChatColor.DARK_GRAY + " ): " + ChatColor.AQUA + player.getName());
+            sender.sendMessage(Main.getPrefix() + "Player " + ChatColor.DARK_GRAY + "( " + ChatColor.GRAY + counter + ChatColor.DARK_GRAY + " ): " + ChatColor.AQUA + player.getName());
         }
         return false;
     }

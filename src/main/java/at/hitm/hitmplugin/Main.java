@@ -5,8 +5,8 @@ import at.hitm.hitmplugin.commands.DateCommand;
 import at.hitm.hitmplugin.commands.GetOnlinePlayersCommand;
 import at.hitm.hitmplugin.commands.GiveMoneyCommand;
 import at.hitm.hitmplugin.items.ItemManager;
-import at.hitm.hitmplugin.listeners.PlayerCraftListener;
 import at.hitm.hitmplugin.listeners.JoinLeaveListener;
+import at.hitm.hitmplugin.listeners.PlayerCraftListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
@@ -35,7 +35,7 @@ public final class Main extends JavaPlugin {
 
     /**
      * Gets the prefix of the plugin
-     * 
+     *
      * @return the prefix
      */
     public static String getPrefix() {
