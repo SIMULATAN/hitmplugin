@@ -13,27 +13,30 @@ import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
 
 
 public class PlayerCraftListener implements Listener {
 
     private static final int NUMBER_OF_PLACES = 9;
+
     @EventHandler
     public void onCraftingEvent(PrepareItemCraftEvent event) {
 
         CraftingInventory inventory = event.getInventory();
         ItemStack[] items = inventory.getMatrix();
 
-        if(containsItem(ItemManager.HITMcoin, items)) {
+        if (containsItem(ItemManager.HITMcoin, items)) {
             event.getInventory().setResult(new ItemStack(Material.AIR, 0));
         }
     }
 
     private static boolean containsItem(ItemStack toCheckFor, ItemStack[] toCompare) {
         for (int i = 0; i < NUMBER_OF_PLACES; i++) {
-            if(toCompare[i].isSimilar(toCheckFor)) {
+            if (Objects.requireNonNull(toCompare[i].getItemMeta()).getCustomModelData() == Objects.requireNonNull(ItemManager.HITMcoin.getItemMeta()).getCustomModelData()) {
                 return true;
             }
+
         }
         return false;
     }
