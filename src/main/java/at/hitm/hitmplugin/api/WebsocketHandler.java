@@ -1,9 +1,8 @@
 package at.hitm.hitmplugin.api;
 
+import at.hitm.hitmplugin.utils.PerformanceMonitor;
 import at.hitm.hitmplugin.utils.Utils;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.*;
@@ -56,7 +55,11 @@ public class WebsocketHandler {
             if (action.requiresData() && !requestAsJson.has("data")) throw new JSONException("No data.");
             Object requestData = null;
             if (requestAsJson.has("data")) requestData = requestAsJson.get("data");
-            if (action == EnumRequestType.USERINFO) {
+            if (action == EnumRequestType.CHAT) {
+                if (!(requestData instanceof JSONObject)) return;
+                JSONObject data = (JSONObject) requestData;
+                Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "<DISCORD> " + ChatColor.GRAY + data.getString("user") + ChatColor.GOLD + " > " + ChatColor.WHITE + data.getString("message"));
+            } else if (action == EnumRequestType.USERINFO) {
                 UUID uuid = Utils.getUUID((String) requestData);
                 if (uuid == null) throw new JSONException("Invalid UUID.");
                 OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
@@ -74,6 +77,9 @@ public class WebsocketHandler {
                 OfflinePlayer p = Bukkit.getOfflinePlayer(UUID.fromString((String) requestData));
                 p.setWhitelisted(true);
                 respond(sessionRaw, id, action, p.getName() + " got whitelisted.");
+            } else if (action == EnumRequestType.STATS) {
+                Runtime runtime = Runtime.getRuntime();
+                respond(sessionRaw, id, action, new JSONObject().put("memoryused", runtime.totalMemory() - runtime.freeMemory()).put("maxmemory", runtime.maxMemory()).put("tps", PerformanceMonitor.getTps()).put("online", Bukkit.getOnlinePlayers().size()));
             }
         } catch (Exception e) {
             try {
