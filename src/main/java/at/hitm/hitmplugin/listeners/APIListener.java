@@ -1,6 +1,7 @@
 package at.hitm.hitmplugin.listeners;
 
 import at.hitm.hitmplugin.api.WebsocketHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
@@ -27,7 +28,11 @@ public class APIListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onJoin(PlayerJoinEvent event) {
-        sendEvent("playerjoin", new JSONObject().put("message", event.getJoinMessage()).put("location", getLocation(event.getPlayer().getLocation())));
+        // playerjoinillegal will fire when a not whitelisted player tries to join (this shouldn't happen!)
+        if (Bukkit.hasWhitelist() && !event.getPlayer().isWhitelisted())
+            sendEvent("playerjoinillegal", new JSONObject().put("player", event.getPlayer().getDisplayName()).put("uuid", event.getPlayer().getUniqueId()));
+        else
+            sendEvent("playerjoin", new JSONObject().put("message", event.getJoinMessage()).put("location", getLocation(event.getPlayer().getLocation())));
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -46,7 +51,7 @@ public class APIListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onJoin(EntityExplodeEvent event) {
+    public void onExplosion(EntityExplodeEvent event) {
         if (event.getEntityType() == EntityType.CREEPER) {
             sendEvent("creeperexplosion", getLocation(event.getLocation()));
         }
