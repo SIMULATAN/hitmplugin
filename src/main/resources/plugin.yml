@@ -20,3 +20,6 @@ commands:
     usage: /warp [warp name]
   warps:
     usage: /warps <create | delete | info> <warp name>
+  givecustomitems:
+    description: Gives you all custom items
+    permission: op

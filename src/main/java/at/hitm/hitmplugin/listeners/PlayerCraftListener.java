@@ -32,11 +32,11 @@ public class PlayerCraftListener implements Listener {
     }
 
     private static boolean containsItem(ItemStack toCheckFor, ItemStack[] toCompare) {
-        for (int i = 0; i < NUMBER_OF_PLACES; i++) {
-            if (Objects.requireNonNull(toCompare[i].getItemMeta()).getCustomModelData() == Objects.requireNonNull(ItemManager.HITMcoin.getItemMeta()).getCustomModelData()) {
+        if (toCompare == null) return false;
+        for (int i = 0; i < Math.min(NUMBER_OF_PLACES, toCompare.length); i++) {
+            if (toCompare[i].getItemMeta().getCustomModelData() == toCheckFor.getItemMeta().getCustomModelData()) {
                 return true;
             }
-
         }
         return false;
     }

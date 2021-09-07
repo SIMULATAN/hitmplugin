@@ -8,6 +8,7 @@ package at.hitm.hitmplugin;
 import at.hitm.hitmplugin.api.API;
 import at.hitm.hitmplugin.commands.DateCommand;
 import at.hitm.hitmplugin.commands.GetOnlinePlayersCommand;
+import at.hitm.hitmplugin.commands.GiveCustomItemsCommand;
 import at.hitm.hitmplugin.commands.GiveMoneyCommand;
 import at.hitm.hitmplugin.listeners.APIListener;
 import at.hitm.hitmplugin.listeners.JoinLeaveListener;
@@ -77,6 +78,9 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new PlayerCraftListener(), this);
         pluginManager.registerEvents(new JoinLeaveListener(), this);
         pluginManager.registerEvents(new APIListener(), this);
+        pluginManager.registerEvents(ItemManager.boomerang, this);
+        pluginManager.registerEvents(ItemManager.explosiveBow, this);
+        pluginManager.registerEvents(ItemManager.teleportSword, this);
     }
 
     private void commandRegistration() {
@@ -85,6 +89,7 @@ public final class Main extends JavaPlugin {
         getCommand("giveMoney").setExecutor(new GiveMoneyCommand());
         getCommand("getOnlinePlayers").setExecutor(new GetOnlinePlayersCommand());
         getCommand("giveMoney").setExecutor(new GiveMoneyCommand());
+        getCommand("givecustomitems").setExecutor(new GiveCustomItemsCommand());
         // used to setup warps
         PluginCommand warps = getCommand("warps");
         warps.setExecutor(new WarpsCommand());
