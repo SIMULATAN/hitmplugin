@@ -1,3 +1,8 @@
+/**
+ * @Author: Jakob Hofer
+ * @Date: 4.9.21
+ */
+
 package at.hitm.hitmplugin.api;
 
 import at.hitm.hitmplugin.utils.PerformanceMonitor;
@@ -65,8 +70,10 @@ public class WebsocketHandler {
                 OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
                 System.out.println("hi");
                 System.out.println(player.getPlayer());
-                if (player.getFirstPlayed() == 0) respond(sessionRaw, id, action, new JSONObject().put("unknown", true));
-                else respond(sessionRaw, id, action, player.isOnline() && player.getPlayer() != null ? getUserinfo(player.getPlayer()) : getUserinfoOffline(player));
+                if (player.getFirstPlayed() == 0)
+                    respond(sessionRaw, id, action, new JSONObject().put("unknown", true));
+                else
+                    respond(sessionRaw, id, action, player.isOnline() && player.getPlayer() != null ? getUserinfo(player.getPlayer()) : getUserinfoOffline(player));
             } else if (action == EnumRequestType.ONLINE_PLAYERS) {
                 JSONArray players = new JSONArray();
                 for (Player player : Bukkit.getOnlinePlayers()) {

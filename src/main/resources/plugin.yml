@@ -15,6 +15,8 @@ commands:
   giveMoney:
     description: gives money to a user
     #usage: /givemoney [amount of money]
-
-
-
+  warp:
+    description: Warps you to a specific location
+    usage: /warp [warp name]
+  warps:
+    usage: /warps <create | delete | info> <warp name>
