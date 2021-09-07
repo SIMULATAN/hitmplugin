@@ -6,9 +6,12 @@
 package at.hitm.hitmplugin;
 
 import at.hitm.hitmplugin.api.API;
-import at.hitm.hitmplugin.commands.DateCommand;
 import at.hitm.hitmplugin.commands.GetOnlinePlayersCommand;
 import at.hitm.hitmplugin.commands.GiveMoneyCommand;
+import at.hitm.hitmplugin.listeners.APIListener;
+import at.hitm.hitmplugin.listeners.JoinLeaveListener;
+import at.hitm.hitmplugin.utils.PerformanceMonitor;
+import at.hitm.hitmplugin.utils.TPSRunnable;
 import at.hitm.hitmplugin.items.ItemManager;
 import at.hitm.hitmplugin.listeners.JoinLeaveListener;
 import at.hitm.hitmplugin.listeners.PlayerCraftListener;
@@ -35,8 +38,11 @@ import java.util.stream.Collectors;
 
 public final class Main extends JavaPlugin {
 
+    private static Main instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         Bukkit.getLogger().fine("Plugin wird aktiviert...");
         FileConfiguration config = this.getConfig();
         config.addDefault("webserver", false);
@@ -72,10 +78,10 @@ public final class Main extends JavaPlugin {
     }
 
     private void listenerRegistration() {
-        Bukkit.getLogger().fine("Plugin wird deaktiviert...");
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new PlayerCraftListener(), this);
         pluginManager.registerEvents(new JoinLeaveListener(), this);
+        pluginManager.registerEvents(new APIListener(), this);
     }
 
     private void commandRegistration() {
@@ -115,5 +121,9 @@ public final class Main extends JavaPlugin {
 
     public static void send(Player player, String message) {
         player.sendMessage(getPrefix() + message);
+    }
+
+    public static Main getInstance() {
+        return instance;
     }
 }

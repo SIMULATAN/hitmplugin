@@ -7,7 +7,7 @@ package at.hitm.hitmplugin.api;
 
 public enum EnumRequestType {
 
-    HELLOWORLD, USERINFO(true), CUSTOM(true), STATS, ONLINE_PLAYERS, WHITELIST(true);
+    HELLOWORLD, USERINFO(true), CUSTOM(true), STATS, ONLINE_PLAYERS, WHITELIST(true), CHAT(true);
 
     private EnumRequestType() {
         this.id = this.name().toLowerCase();
