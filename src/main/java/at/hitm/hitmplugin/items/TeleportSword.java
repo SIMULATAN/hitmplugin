@@ -47,7 +47,7 @@ public class TeleportSword implements Listener {
         if (e.getItem() != null && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.getItem().getType() == sword.getType() && e.getItem().hasItemMeta() && e.getItem().getItemMeta().hasCustomModelData() && e.getItem().getItemMeta().getCustomModelData() == sword.getItemMeta().getCustomModelData()) {
             if (lastTime.containsKey(player)) {
                 long time = lastTime.get(player);
-                if (System.currentTimeMillis() - time < 250) {
+                if (System.currentTimeMillis() - time < 100) {
                     player.sendMessage(ChatColor.RED + "This item is still on cooldown!");
                     return;
                 }
