@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class GiveCustomItemsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        ((Player) sender).getInventory().addItem(ItemManager.boomerang.boomerang, ItemManager.explosiveBow.bow, ItemManager.teleportSword.sword);
+        ((Player) sender).getInventory().addItem(ItemManager.boomerang.boomerang, ItemManager.explosiveBow.bow, ItemManager.teleportSword.sword, ItemManager.hyperion.sword);
         return true;
     }
 }

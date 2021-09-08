@@ -81,6 +81,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(ItemManager.boomerang, this);
         pluginManager.registerEvents(ItemManager.explosiveBow, this);
         pluginManager.registerEvents(ItemManager.teleportSword, this);
+        pluginManager.registerEvents(ItemManager.hyperion, this);
     }
 
     private void commandRegistration() {

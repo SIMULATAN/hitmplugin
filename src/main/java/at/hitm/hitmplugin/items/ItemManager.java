@@ -23,6 +23,7 @@ public class ItemManager {
     public static Boomerang boomerang = new Boomerang();
     public static ExplosiveBow explosiveBow = new ExplosiveBow();
     public static TeleportSword teleportSword = new TeleportSword();
+    public static Hyperion hyperion = new Hyperion();
 
     public static void init() {
         createHITMcoin();
