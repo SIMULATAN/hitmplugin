@@ -60,7 +60,7 @@ public class Hyperion implements Listener {
             location.getWorld().getNearbyEntities(location, 4, 3, 4).stream()
                     .filter(entity -> entity instanceof LivingEntity)
                     .filter(entity -> !(entity instanceof Player))
-                    .forEach(entity -> ((LivingEntity) entity).damage(30F));
+                    .forEach(entity -> ((LivingEntity) entity).damage(30F, player));
             float pitch = player.getEyeLocation().getPitch();
             float yaw = player.getEyeLocation().getYaw();
             location.add(0, 1, 0);
