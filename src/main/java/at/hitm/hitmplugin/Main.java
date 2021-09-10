@@ -6,10 +6,7 @@
 package at.hitm.hitmplugin;
 
 import at.hitm.hitmplugin.api.API;
-import at.hitm.hitmplugin.commands.DateCommand;
-import at.hitm.hitmplugin.commands.GetOnlinePlayersCommand;
-import at.hitm.hitmplugin.commands.GiveCustomItemsCommand;
-import at.hitm.hitmplugin.commands.GiveMoneyCommand;
+import at.hitm.hitmplugin.commands.*;
 import at.hitm.hitmplugin.listeners.APIListener;
 import at.hitm.hitmplugin.listeners.JoinLeaveListener;
 import at.hitm.hitmplugin.utils.TPSRunnable;
@@ -91,6 +88,7 @@ public final class Main extends JavaPlugin {
         getCommand("getOnlinePlayers").setExecutor(new GetOnlinePlayersCommand());
         getCommand("giveMoney").setExecutor(new GiveMoneyCommand());
         getCommand("givecustomitems").setExecutor(new GiveCustomItemsCommand());
+        getCommand("craft").setExecutor(new CraftCommand());
         // used to setup warps
         PluginCommand warps = getCommand("warps");
         warps.setExecutor(new WarpsCommand());

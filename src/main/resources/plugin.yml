@@ -23,3 +23,5 @@ commands:
   givecustomitems:
     description: Gives you all custom items
     permission: op
+  craft:
+    description: Opens a portable crafting table
